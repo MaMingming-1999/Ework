@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../img/hebut.png');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#container-text-box {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+    width: 100%;
+}
+#header-title {
+    margin: 70px;
+    font-family: 微软雅黑;
+    font-weight: bold;
+    font-size: 35px;
+}
+#container-text{
+    width: 380px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+#register-text a:link, #register-text a:visited{
+    color: black;
+}
+#exampleInputText1 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputPassword1 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputPassword2 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputText2 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputText3 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputText4 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+#exampleInputText5 {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.btn-position {
+    margin-top: 40px;
+}

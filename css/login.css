@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../img/hebut.png');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#container-text-box {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+    width: 100%;
+}
+#header-title {
+    margin:80px;
+    font-family: 微软雅黑;
+    font-weight: bold;
+    font-size: 35px;
+}
+.all
+{
+    margin-top: 70px;
+}
+#container-text{
+    margin-top: 50px;
+    width: 380px;
+    height: 120px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#register-text {
+    font-size: 15px;
+    font-weight: bold;
+}
+#register-text a:link, #register-text a:visited{
+    color: black;
+}
+#exampleInputEmail1 {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+#exampleInputPassword1 {
+    background-color: rgba(255, 255, 255, 0.8);
+}
