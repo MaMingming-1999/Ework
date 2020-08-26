@@ -15,38 +15,38 @@ function returnStudentLogin() {
     } else if (phoneNumber!==11 || !(/^1[3|4|5|7|8][0-9]{9}$/.test(phone))) {
         alert("您输入的电话号码不正确！")
     } else {
-    $.ajax({
-        //接口地址
-        url:'http://localhost:8081/ework/user/register',
-        //请求方式post/get
-        type:'post',
-        contentType:'application/json',
-        //数据
-        data:JSON.stringify({
-            password: password2,
-            phone: phone,
-            studentId: studentId,
-            userId: userId,
-            userName: userName,
-        }),
-        //返回值类型
-        dataType:'json',
-        //成功的回调函数
-        success:function (data) {
-            if(data.code===1)
-            {
-                alert(data.msg);
-                console.log(data);
-            } else {
-                alert("注册成功！");
-                window.location.href="../en/studentLogin.html"
+        $.ajax({
+            //接口地址
+            url:'http://localhost:8081/ework/user/register',
+            //请求方式post/get
+            type:'post',
+            contentType:'application/json',
+            //数据
+            data:JSON.stringify({
+                password: password2,
+                phone: phone,
+                studentId: studentId,
+                userId: userId,
+                userName: userName,
+            }),
+            //返回值类型
+            dataType:'json',
+            //成功的回调函数
+            success:function (data) {
+                if(data.code===1)
+                {
+                    alert(data.msg);
+                    console.log(data);
+                } else {
+                    alert("注册成功！");
+                    window.location.href="../en/studentLogin.html"
+                }
+            },
+            //失败的回调函数
+            error:function (e) {
+                console.log(e);
             }
-        },
-        //失败的回调函数
-        error:function (e) {
-            console.log(e);
-        }
-    })
+        })
     }
 
 }

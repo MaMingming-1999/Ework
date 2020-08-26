@@ -28,13 +28,15 @@ function login(){
                 alert(data.msg);
                 console.log(data);
             } else {
-                alert('登陆成功');
-                window.location.href = 'studentHome.html';
-                var person = JSON.stringify({
+                alert('欢迎您，' + data.data.userName);
+                var student = JSON.stringify({
                     id : data.data.id,
                     token : data.data.token,
+                    type : data.data.type,
+                    userName : data.data.userName,
                 })
-                localStorage.setItem('person',person);
+                localStorage.setItem('student',student);
+                window.location.href = '../en/studentHome.html';
             }
 
         },
@@ -75,12 +77,13 @@ function adminLogin(){
                 console.log(data);
             } else {
                 alert('登陆成功');
-                window.location.href = 'adminHome.html';
-                var person = JSON.stringify({
+                window.location.href = '../en/adminHome.html';
+                var admin = JSON.stringify({
                     id : data.data.id,
                     token : data.data.token,
+                    type : data.data.type,
                 })
-                localStorage.setItem('person',person);
+                localStorage.setItem('admin',admin);
             }
 
         },
