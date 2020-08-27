@@ -2,3 +2,21 @@
     margin: 0;
     padding: 0;
 }
+.layui-card-body p {
+    font-size: 15px;
+    margin-top: 5px;
+    font-family: 微软雅黑;
+}
+.layui-card-header {
+    font-size: 18px;
+    font-weight: bold;
+}
+#title-text {
+    color: #009E94;
+}
+#title-header {
+    color: #009f95;
+}
+.layui-href {
+    color:#009f95;
+}

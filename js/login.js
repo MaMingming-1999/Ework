@@ -82,6 +82,7 @@ function adminLogin(){
                     id : data.data.id,
                     token : data.data.token,
                     type : data.data.type,
+                    userName:data.data.userName,
                 })
                 localStorage.setItem('admin',admin);
             }

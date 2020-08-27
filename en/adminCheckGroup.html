@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ework - 建立新小组</title>
+    <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <style type="text/css">
+        td div.layui-table-cell{height:60px;
+            line-height: 60px;
+            position: relative;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            box-sizing: border-box;
+            padding: 0px 15px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">Ework作业系统管理端</div>
+        <ul class="layui-nav layui-layout-left">
+            <!--水平导航：显示用户名+个人信息+注销账号+安全退出-->
+            <li class="layui-nav-item"><a href="adminHome.html" id="goto-index">首页</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">暂无</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../img/admin2.png" class="layui-nav-img">
+                    <span id="showUserName">Avatar</span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="adminInfo.html" class="userInfo">个人信息</a></dd>
+                    <dd><a class="safeSettings" onclick="logout()">注销账号</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" onclick="exitLogin()">退出登录</li>
+        </ul>
+    </div>
+
+    <!--垂直导航：显示个人信息+修改个人信息-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:">测试1</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" id="1">1</a></dd>
+                        <dd><a href="javascript:;" id="2">2</a></dd>
+                        <dd><a href="javascript:;" id="others">其他</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">小组管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="adminAddGroup.html" id="addGroup">小组操作</a></dd>
+                        <dd><a href="adminCheckGroup.html" id="checkGroup">管理创建的小组</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">我的信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="adminInfo.html" id="adminInfo">个人信息</a></dd>
+                        <dd><a href="adminHome.html" id="adminSettings">个人信息设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" id="5"><i class="layui-icon layui-icon-home" style="margin-right: 10px"></i>测试3</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" id="6"><i class="layui-icon layui-icon-heart-fill" style="margin-right: 10px"></i>测试4</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" id="7"><i class="layui-icon layui-icon-app" style="margin-right: 10px"></i>其他功能</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-row" id="EditUser" style="display:none;">
+            <div class="layui-col-md10">
+                <form class="layui-form layui-from-pane" id="updateUser"   style="margin-top:20px" >
+
+                    <input type="hidden" name="isadmin" id="isadmin">
+                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="isforbid" id="isforbid">
+                    <input type="hidden" name="isable" id="isable">
+                    <input type="hidden" name="rtime" id="rtime">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="fname" id="fname"  required  lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="phone" id="phone" required  lay-verify="required" autocomplete="off" placeholder="请输入年龄" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="email" id="email" required  lay-verify="required" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="password" id="password" required  lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">真实姓名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" id="name" required  lay-verify="required" autocomplete="off" placeholder="请输入真实姓名" class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item" id="showImg">
+                        <label class="layui-form-label">头像</label>
+                        <div class="layui-input-block">
+                            <img class="layui-upload-img"  id="imgshow" src="" style="width:100px;height:100px;" >
+                        </div>
+                    </div>
+
+
+                    <div  class="layui-upload"  id="updateImg">
+                        <button type="button"  class="layui-btn layui-btn-primary" id="img" style="margin-top: 30px;margin-left: 10px">修改头像</button>
+                        <div class="layui-upload-list" style="margin-left: 120px;margin-top: -50px"  >
+                            <img class="layui-upload-img" id="demo1" src="" style="width:100px;height:100px;" >
+                            <p id="demoText"></p>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="headimg" id="headimg" value="" >
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">自我介绍</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="introduce" id="introduce" required  lay-verify="required" autocomplete="off" placeholder="请输入自我介绍" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top:40px" id="check">
+                        <div class="layui-input-block">
+                            <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="formDemo" >确认修改</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <table class="layui-hide" id="Users" lay-filter="test"></table>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+    </div>
+</div>
+
+<script src="../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
+<script src="../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="../resource/layui-v2.5.6/layui/layui.js"></script>
+<script src="../js/adminLayuiCommon.js"></script>
+<script src="../js/common.js"></script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    //获取变量
+    var id = JSON.parse(localStorage.getItem('admin')).id;
+    var token = JSON.parse(localStorage.getItem('admin')).token;
+    var type = JSON.parse(localStorage.getItem('admin')).type;
+    layui.use(['table', 'form', 'layer','upload'], function () {
+        var table = layui.table,
+            layer = layui.layer,
+            upload = layui.upload,
+            // $ = layui.jquery
+            form = layui.form;
+        table.render({
+            elem: '#Users'
+            ,url:'http://localhost:8081/ework/admin/detail'
+            ,type:'post'
+            ,toolbar: '#toolbarDemo'
+            ,title: '用户数据表'
+            ,totalRow: true
+            ,limit:6
+            ,cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                ,{field:'creator', title:'创建者', width:150, edit: 'text', totalRow: true}
+                ,{field:'code', title:'邀请码', width:150, edit: 'text'}
+                ,{field:'name', title:'小组名', width:150, edit: 'text'}
+                ,{field:'description', title:'小组描述', width:250, edit: 'text'}
+                ,{field:'status', title:'小组状态', width:150}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:200}
+            ]]
+            ,page: true
+
+        });
+
+        form.on('submit(formDemo)', function(data) {
+            $.ajax({
+                url:'http://localhost:8081/ework/admin/changeDetail',
+                type:'post',
+                contentType:'application/json',
+                data:JSON.stringify(data.field),
+                success:function (msg) {
+                    if(msg!=null){
+                        layer.closeAll('loading');
+                        layer.load(2);
+                        layer.msg("修改成功", {icon: 6});
+                        setTimeout(function(){
+                            layer.closeAll();//关闭所有的弹出层
+                            table.reload("Users");
+                        }, 1000);
+                    }else{
+                        layer.msg("修改失败", {icon: 5});
+                    }
+                }
+            })
+            return false;
+        })
+
+
+
+        //工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选')
+                    break;
+            }
+        });
+
+
+        //监听工具条
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //查看
+            if(obj.event === 'detail'){
+                $("#check").hide();
+                $("#showImg").show();
+                $("#updateImg").hide();
+                $("#isadmin").val(data.isadmin);
+                $("#id").val(data.id);
+                $("#isforbid").val(data.isforbid);
+                $("#isable").val(data.isable);
+                $("#rtime").val(data.rtime);
+                $("#fname").val(data.fname);
+                $("#phone").val(data.phone);
+                $("#email").val(data.email);
+                $("#password").val(data.password);
+                $("#name").val(data.name);
+                $("#idcard").val(data.idcard);
+                $("#introduce").val(data.introduce);
+                layer.open({
+                    type:1,
+                    title:"查看个人信息",
+                    area: ['520px', '540px'],
+                    content: $("#EditUser")
+                });
+                // layer.msg('ID：'+ data.id + ' 的查看操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    $.ajax({
+                        url:'http://localhost:8081/ework/admin/changeDetail',
+                        type:'post',
+                        data:{
+                            "description": "",
+                            "groupCode": "",
+                            "groupId": "",
+                            "groupName": "",
+                            "id": id,
+                            "status": 80,
+                            "token": token,
+                            "type": type
+                        },
+                        success:function (msg) {
+                            if(msg=="1"){
+                                layer.msg("删除成功", {icon: 6});
+                                setTimeout(function(){
+                                    layer.closeAll();//关闭所有的弹出层
+                                }, 1000);
+                            }else{
+                                layer.msg("删除失败", {icon: 5});
+                            }
+                        }
+                    })
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                $("#check").show();
+                $("#showImg").hide();
+                $("#updateImg").show();
+                // layer.alert('编辑行：<br>'+ JSON.stringify(obj.data.address))
+                // alert(data.fname);
+                $("#id").val(data.id);
+                $("#fname").val(data.fname);
+                $("#phone").val(data.phone);
+                $("#email").val(data.email);
+                $("#password").val(data.password);
+                $("#name").val(data.name);
+                $("#idcard").val(data.idcard);
+                $('#imgshow').attr('src', "/file/"+data.headimg);
+                $('#demo1').attr('src', "/file/"+data.headimg);
+                $("#introduce").val(data.introduce);
+                layer.open({
+                    type:1,
+                    title:"修改个人信息",
+                    area: ['520px', '590px'],
+                    content: $("#EditUser")
+                });
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

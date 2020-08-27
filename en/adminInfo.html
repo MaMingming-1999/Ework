@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ework - 个人信息</title>
+    <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">Ework作业系统管理端</div>
+        <ul class="layui-nav layui-layout-left">
+            <!--水平导航：显示用户名+个人信息+注销账号+安全退出-->
+            <li class="layui-nav-item"><a href="adminHome.html" id="goto-index">首页</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">暂无</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../img/admin2.png" class="layui-nav-img">
+                    <span id="showUserName">Avatar</span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="adminInfo.html" class="userInfo">个人信息</a></dd>
+                    <dd><a class="safeSettings" onclick="logout()">注销账号</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" onclick="quitLogin()">退出登录</li>
+        </ul>
+    </div>
+
+    <!--垂直导航：显示个人信息+修改个人信息-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:">测试1</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" id="myOrder">1</a></dd>
+                        <dd><a href="javascript:;" id="receivedOrder">2</a></dd>
+                        <dd><a href="javascript:;" id="others">其他</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">小组管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="adminAddGroup.html" id="addGroup">小组操作</a></dd>
+                        <dd><a href="adminCheckGroup.html" id="checkGroup">管理创建的小组</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">我的信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="adminInfo.html" id="adminInfo">个人信息</a></dd>
+                        <dd><a href="adminHome.html" id="adminSettings">个人信息设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" id="myStore"><i class="layui-icon layui-icon-home" style="margin-right: 10px"></i>测试3</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" id="myFavor"><i class="layui-icon layui-icon-heart-fill" style="margin-right: 10px"></i>测试4</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" id="other"><i class="layui-icon layui-icon-app" style="margin-right: 10px"></i>其他功能</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>个人信息</legend>
+        </fieldset>
+
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body" id="title-text">
+                            成功都是租来的，租金就是每天的努力。
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">基本信息</div>
+                        <div class="layui-card-body">
+                            <p id="lay-adm-id">工号：</p>
+                            <p id="lay-adm-name">昵称：</p>
+                            <p id="lay-adm-phone">电话号码：</p>
+                            <p id="lay-adm-group">管理小组数量：</p>
+                            <p id="lay-adm-create-group">创建小组数量：</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+
+    </div>
+</div>
+
+
+<script src="../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
+<script src="../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="../resource/layui-v2.5.6/layui/layui.js"></script>
+<script src="../js/adminLayuiCommon.js"></script>
+<script src="../js/common.js"></script>
+
+</body>
+</html>
