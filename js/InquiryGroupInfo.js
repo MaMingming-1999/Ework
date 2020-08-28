@@ -28,9 +28,9 @@ console.log(groupId)
             contentType: 'application/json',
             //数据
             data: JSON.stringify({
-                groupCode: 'yangli',
+                groupCode: '',
                 groupId: "",
-                id: 0,
+                id: groupId,
             }),
             //返回值类型
             dataType: 'json',

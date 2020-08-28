@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ework - 建立新小组</title>
+    <title>Ework - 小组信息修改</title>
     <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/groupTable.css">
-    <link rel="stylesheet" href="../resource/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../resource/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
 </head>
 <body class="layui-layout-body">
 
@@ -73,40 +70,73 @@
         </div>
     </div>
 
-
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>修改小组信息</legend>
+            <legend>编辑小组信息</legend>
         </fieldset>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="mytable">
-                <thead>
-                <tr>
-                    <td>创建者</td>
-                    <td>小组邀请码</td>
-                    <td>小组名称</td>
-                    <td>小组描述</td>
-                    <td>小组状态</td>
-                    <td>操作</td>
-                </tr>
-                </thead>
-            </table>
-        </div>
+            <form class="layui-form" action="" style="" lay-filter="myForm">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">小组名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="groupNameLayui" required  lay-verify="required"  id="layui-group-name"
+                               placeholder="请输入小组名称" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">请输入小组名称</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邀请码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="visitedCode" required lay-verify="required" id="layui-code"
+                               placeholder="请输入自定义邀请码" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">邀请码</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">小组描述</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="groupDescription" required lay-verify="required" id="layui-text"
+                               placeholder="请输入小组描述" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">请输入小于20字的小组描述</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择框</label>
+                    <div class="layui-input-inline" >
+                        <select name="status" lay-verify="required" id="checkbox-text">
+                            <option value=""></option>
+                            <option value="10">未开放加入</option>
+                            <option value="20">只允许管理员加入</option>
+                            <option value="30">只允许学生加入</option>
+                            <option value="40">允许管理员和学生加入</option>
+                            <option value="80">停用小组</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="changeGroup()">提交修改</button>
+                </div>
+            </div>
     </div>
+
     <div class="layui-footer">
         <!-- 底部固定区域 -->
     </div>
-
 </div>
+
 <script src="../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../resource/layui-v2.5.6/layui/layui.js"></script>
-<script src="../resource/bootstable-1.1/bootstable.js"></script>
 <script src="../js/adminLayuiCommon.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/GroupTable.js"></script>
-
+<script src="../js/groupEdit.js"></script>
 
 </body>
 </html>
