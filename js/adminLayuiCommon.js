@@ -287,7 +287,7 @@ function joinGroup(){
         {
             $.ajax({
                 //接口地址
-                url: 'http://localhost:8081/ework/admin/joinGroup',
+                url: 'http://localhost:8081/ework/group-admin/joinGroup',
                 //请求方式post/get
                 type: 'post',
                 contentType: 'application/json',
@@ -326,7 +326,7 @@ function quitGroup(){
         var layer = layui.layer;
         $.ajax({
             //接口地址
-            url: 'http://localhost:8081/ework/admin/quitGroup',
+            url: 'http://localhost:8081/ework/group-admin/quitGroup',
             //请求方式post/get
             type: 'post',
             contentType: 'application/json',

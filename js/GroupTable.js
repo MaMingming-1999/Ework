@@ -38,7 +38,7 @@ $(function () {
                                     "<td>"+statusInfo+"</td>"+
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
-                                    +"</a>"+"<a onclick='deleteGroup(groupId)'>"+
+                                    +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===20) {
                                 statusInfo='只允许管理员加入';
@@ -49,7 +49,7 @@ $(function () {
                                     "<td>"+statusInfo+"</td>"+
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
-                                    +"</a>"+"<a onclick='deleteGroup(groupId)'>"+
+                                    +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===30) {
                                 statusInfo = '只允许学生加入';
@@ -60,7 +60,7 @@ $(function () {
                                     "<td>"+statusInfo+"</td>"+
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
-                                    +"</a>"+"<a onclick='deleteGroup(groupId)'>"+
+                                    +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===40) {
                                 statusInfo = '允许管理员和学生加入';
@@ -71,7 +71,7 @@ $(function () {
                                     "<td>"+statusInfo+"</td>"+
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
-                                    +"</a>"+"<a onclick='deleteGroup(groupId)'>"+
+                                    +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                                 console.log(groupId);
                             } else if(status===80) {
@@ -83,7 +83,7 @@ $(function () {
                                     "<td>"+statusInfo+"</td>"+
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
-                                    +"</a>"+"<a onclick='deleteGroup(groupId)'>"+
+                                    +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===100) {
                             }
@@ -96,43 +96,3 @@ $(function () {
                 }
             })
 })
-
-//删除小组
-function deleteGroup(groupId) {
-    layui.use('layer',function() {
-        var layer = layui.layer;
-            $.ajax({
-                //接口地址
-                url: 'http://localhost:8081/ework/group-info/change',
-                //请求方式post/get
-                type: 'post',
-                contentType: 'application/json',
-                //数据
-                data: JSON.stringify({
-                    "description": "",
-                    "groupCode":"" ,
-                    "groupId": groupId,
-                    "groupName": "",
-                    "id": id,
-                    "status": 100,
-                    "token": token,
-                    "type": type,
-                }),
-                //返回值类型
-                dataType: 'json',
-                //成功的回调函数
-                success: function (data) {
-                    if (data.code === 1) {
-                        alert(data.msg);
-                    } else {
-                        alert(userName+',您的小组'+data.data.groupName+'已成功删除');
-                        window.location.href = "../en/adminCheckGroup.html"
-                    }
-                },
-                //失败的回调函数
-                error: function (e) {
-                    console.log(e);
-                }
-            })
-    });
-}

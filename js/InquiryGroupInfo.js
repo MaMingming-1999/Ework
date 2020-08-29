@@ -1,3 +1,9 @@
+//获取变量
+var id = JSON.parse(localStorage.getItem('admin')).id;
+var token = JSON.parse(localStorage.getItem('admin')).token;
+var type = JSON.parse(localStorage.getItem('admin')).type;
+var userName = JSON.parse(localStorage.getItem('admin')).userName;
+
 //找到链接的groupCode
 function parseUrl(){
     var url=location.href;
@@ -70,3 +76,48 @@ console.log(groupId)
         })
     })
 })
+
+//管理员删除小组
+function deleteGroup() {
+    layui.use('layer',function() {
+        var layer = layui.layer;
+        $.ajax({
+            //接口地址
+            url: 'http://localhost:8081/ework/group-info/change',
+            //请求方式post/get
+            type: 'post',
+            contentType: 'application/json',
+            //数据
+            data: JSON.stringify({
+                "description": "",
+                "groupCode":"" ,
+                "groupId": groupId,
+                "groupName": "",
+                "id": id,
+                "status": 100,
+                "token": token,
+                "type": type,
+            }),
+            //返回值类型
+            dataType: 'json',
+            //成功的回调函数
+            success: function (data) {
+                if (data.code === 1) {
+                    alert(data.msg);
+                } else {
+                    alert(userName+',您的小组'+data.data.groupName+'已成功删除');
+                    window.location.href = "../en/adminCheckGroup.html"
+                }
+            },
+            //失败的回调函数
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    });
+}
+
+//取消
+function returnCheck() {
+    window.location.href = '../en/adminCheckGroup.html'
+}
