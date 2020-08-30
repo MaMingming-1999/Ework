@@ -76,7 +76,7 @@ function adminLogin(){
                 alert(data.msg);
                 console.log(data);
             } else {
-                alert('登陆成功');
+                alert('欢迎您，'+data.data.userName);
                 window.location.href = '../en/adminHome.html';
                 var admin = JSON.stringify({
                     id : data.data.id,

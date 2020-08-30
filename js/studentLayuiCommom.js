@@ -210,16 +210,14 @@ $(function () {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    var $groupIdtest = ''
                     var studentStatus=data.data.status;
-                    if(data.data.groupId===''){
+                    if(data.data.groupId===0){
                         $('#lay-stu-group').append("尚未加入小组")
                     } else {
                         $('#lay-groupCode').append(data.data.groupCode);
                         $('#lay-groupId').append(data.data.groupId);
-                        $groupIdtest += '<a href="../en/inquiryStudentGroupInfo.html?groupId='+
-                            data.data.groupId+'" class="layui-href" title="查看小组详细信息">'+data.data.groupName+'</a>';
-                        $('#lay-stu-group').append($groupIdtest);
+                        $('#lay-stu-group').append('<a href="../en/inquiryStudentGroupInfo.html?groupId='+
+                            data.data.groupId+'" class="layui-href" title="查看小组详细信息">'+data.data.groupName+'</a>');
                     }
                     $('#lay-stu-nickname').append(userName)
                     $('#lay-stu-phone').append(data.data.phone)
@@ -367,7 +365,7 @@ function quitGroup(){
                     layer.msg(data.msg);
                     console.log(data);
                 } else {
-                    layer.msg(userName+data.data.groupName+data.data.topic,{icon:1})
+                    layer.msg(userName+',您已'+data.data.topic+':'+data.data.groupName,{icon:1})
                 }
             },
             //失败的回调函数
