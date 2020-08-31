@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ework - 查看作业信息</title>
+    <title>批改作业</title>
     <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/groupTable.css">
@@ -72,22 +72,21 @@
             </ul>
         </div>
     </div>
-
-
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>查看已留作业列表</legend>
+            <legend>查看已被提交的作业列表</legend>
         </fieldset>
         <div class="table-responsive">
             <table class="table table-bordered table-striped" id="mytable">
                 <thead>
                 <tr>
+                    <td>发布者</td>
                     <td>作业标题</td>
-                    <td>作业描述</td>
-                    <td>发放学生计数</td>
-                    <td>已提交数量</td>
-                    <td>结束时间</td>
+                    <td>提交者学号</td>
+                    <td>提交者昵称</td>
+                    <td>作业分数</td>
+                    <td>批改教师</td>
                     <td>作业状态</td>
                     <td>操作</td>
                 </tr>
@@ -98,15 +97,13 @@
     <div class="layui-footer">
         <!-- 底部固定区域 -->
     </div>
-
 </div>
+</body>
 <script src="../resource/jquery-3.5.1/jquery-3.5.1.js"></script>
 <script src="../resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script src="../resource/layui-v2.5.6/layui/layui.js"></script>
 <script src="../resource/bootstable-1.1/bootstable.js"></script>
 <script src="../js/adminLayuiCommon.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/adminHomeworkList.js"></script>
-
-</body>
+<script src="../js/adminCorrectHomeworkList.js"></script>
 </html>

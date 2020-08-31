@@ -44,8 +44,8 @@
                     <a class="" href="javascript:">作业管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="adminCreatHomework.html" id="creatNewWork">新建作业</a></dd>
-                        <dd><a href="adminCheckHomeworkList.html" id="checkWorkList">查看作业列表</a></dd>
-                        <dd><a href="javascript:;" id="others">其他</a></dd>
+                        <dd><a href="adminCheckHomeworkList.html" id="checkWorkList">查看作业状态</a></dd>
+                        <dd><a href="adminHomeworkCorrecting.html" id="others">批改作业</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
@@ -87,7 +87,7 @@
                 <label class="layui-form-label">作业描述</label>
                 <div class="layui-input-inline">
                     <textarea name="adminWorkDescription" required lay-verify="required" id="admin-work-description"
-                              placeholder="请输入小组描述" class="layui-textarea"></textarea>
+                              placeholder="请输入作业描述" class="layui-textarea"></textarea>
                 </div>
                 <div class="layui-form-mid layui-word-aux">请输入作业描述</div>
             </div>
@@ -100,7 +100,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button type="button" class="layui-btn" onclick="uploadDoc()">建立新小组</button>
+                <button type="button" class="layui-btn" onclick="uploadDoc()">建立新作业</button>
             </div>
         </div>
     </div>

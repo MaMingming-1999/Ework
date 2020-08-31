@@ -66,7 +66,7 @@ $(function () {
                             "<td>"+studentCount+"</td>"+
                             "<td>"+submitCount+"</td>"+
                             "<td>"+endTimeText+"</td>"+"<td>"+statusText+"</td>"+
-                            "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"&groupId="+groupId+"'>"+
+                            "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"发布"+"</button>"
                             +"</a>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+

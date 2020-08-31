@@ -38,10 +38,13 @@ function uploadDoc() {
     // formData.append('type',type);
     // formData.append('title',title);
     // formData.append('appendixUrl',$('#doc'[0].files[0]));
+    console.log(title);
+    console.log(description);
     $.ajax({
-        url:'http://localhost:8081//ework/work-demand/create',
+        url:'http://localhost:8081/ework/work-demand/create',
         data:JSON.stringify({
-            "appendixUrl": $('#doc')[0].files[0],
+            "appendixUrl":0,
+                // $('#doc')[0].files[0],
             "description": description,
             "id": id,
             "title":title,
@@ -49,8 +52,8 @@ function uploadDoc() {
             "type": type,
         }),
         type:"POST",
-        processData:false,
-        contentType:false,
+        // processData:false,
+        // contentType:false,
         dataType:"JSON",
         success:function (result) {
           console.log(result.data.demandId);
