@@ -54,7 +54,7 @@ $(function() {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    var fileUrl = '';
+                    var fileUrl = 0;
                     if(data.data.appendixUrl == null){
                         fileUrl = '无附件'
                     }

@@ -207,6 +207,9 @@ $(function () {
                 {
                     alert(data.msg);
                     console.log(data);
+                    if(data.msg==='未登陆或登陆超时'){
+                        window.location.href = '../en/adminLogin.html'
+                    }
                 } else {
                     $('#lay-adm-id').append(data.data.adminId);
                     $('#lay-adm-name').append(data.data.userName);

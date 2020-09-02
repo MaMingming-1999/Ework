@@ -57,7 +57,7 @@ $(function() {
                 } else {
                     $('#lay-stu-title').append(data.data.title);
                     $('#lay-stu-description').append(data.data.description);
-                    $('#lay-stu-url').append(data.data.appendixUrl);
+                    $('#lay-stu-url').append("下载附件");
                 }
             },
             //失败的回调函数
@@ -68,6 +68,32 @@ $(function() {
     })
 })
 
+function uploadDoc() {
+    var formData = new FormData();
+    formData.append('file',$("#file")[0].files[0]);
+    console.log(formData)
+    $.ajax({
+        url:'http://localhost:8081/ework/file-submit/uploadFile',
+        data:formData,
+        type:"POST",
+        processData:false,
+        contentType:false,
+        dataType:"JSON",
+        mimeType:"multipart/form-data",
+        success:function (result) {
+            if(result.data.id===0){
+                alert("您没有选中文件")
+            }else {
+                fileUrl = result.data.id;
+                console.log(result.data.id);
+                alert("上传成功");
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
 //保存
 function saveHomework() {
     layui.use('layer',function() {
@@ -108,33 +134,5 @@ function saveHomework() {
                 console.log(e);
             }
         })
-    })
-}
-
-//上传
-function uploadDoc() {
-    var formData = new FormData();
-    formData.append('file',$("#file")[0].files[0]);
-    console.log(formData)
-    $.ajax({
-        url:'http://localhost:8081/ework/file-submit/uploadFile',
-        data:formData,
-        type:"POST",
-        processData:false,
-        contentType:false,
-        dataType:"JSON",
-        mimeType:"multipart/form-data",
-        success:function (result) {
-            if(result.data.url===0){
-                alert("null");
-            }else {
-                fileUrl = result.data.url;
-                console.log(result.data.url);
-                alert("成功");
-            }
-        },
-        error: function (e) {
-            console.log(e);
-        }
     })
 }

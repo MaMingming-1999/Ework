@@ -48,7 +48,8 @@ $(function() {
                                 "<td>"+description+"</td>"+
                                 "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+"作业已保存但未提交"+"</td>"+
                                 "<td>"+"<a href='../en/studentSubmitHomework.html?submitId="+submitId+"'>"+
-                                "<button class='layui-btn'>"+"提交"+"</button>" +"</a></td></tr>")
+                                "<button class='layui-btn'>"+"提交"+"</button></a>"+"<a href='../en/studentSaveHomework.html?submitId="+submitId+"'>"+
+                                "<button class='layui-btn'>"+"修改"+"</button>"+"</a></td></tr>")
                         } else if(status===210||status===220){
                             $('#mytable').append("<tr><td>"+title+"</td>"+
                                 "<td>"+description+"</td>"+

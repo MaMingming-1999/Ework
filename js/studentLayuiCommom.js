@@ -208,6 +208,9 @@ $(function () {
             success: function (data) {
                 if (data.code === 1) {
                     alert(data.msg);
+                    if(data.msg==='未登陆或登陆超时'){
+                        window.location.href = '../en/studentLogin.html'
+                    }
                     console.log(data);
                 } else {
                     var studentStatus=data.data.status;

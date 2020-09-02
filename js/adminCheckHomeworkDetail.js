@@ -3,7 +3,7 @@ var id = JSON.parse(localStorage.getItem('admin')).id;
 var token = JSON.parse(localStorage.getItem('admin')).token;
 var type = JSON.parse(localStorage.getItem('admin')).type;
 var userName = JSON.parse(localStorage.getItem('admin')).userName;
-
+var fileUrl = 0;
 //找到链接的groupCode
 function parseUrl(){
     var url=location.href;
@@ -156,34 +156,58 @@ function deleteHomework(){
     })
 }
 
+//选择框
+    $.ajax({
+        url: 'http://localhost:8081/ework/admin/groupList',
+        //请求方式post/get
+        type: 'post',
+        contentType: 'application/json',
+        //数据
+        data: JSON.stringify({
+            "id": id,
+            "token": token,
+            "type": type,
+        }),
+        //返回值类型
+        dataType: 'json',
+        //成功的回调函数
+        success: function (data) {
+            if (data.code === 1) {
+                alert(data.msg);
+                console.log(data);
+            } else {
+                var length = data.data.length;
+                for (var i = 0;i < length;i++){
+                    var groupId = data.data[i].id;
+                    $('#checkbox-text').append(
+                        "<option value='" + groupId + "'>"+data.data[i].groupName+"</option>"
+                    )
+                }
+            }
+        },
+        //失败的回调函数
+        error: function (e) {
+            console.log(e);
+        }
+
+    })
+
 //发布
 function submitHomework() {
     layui.use('layer',function() {
         var layer = layui.layer;
+        // console.log($('#checkbox-text').val());
         $.ajax({
             //接口地址
-            url: 'http://localhost:8081/ework/work-demand/delete',
+            url: 'http://localhost:8081/ework/work-demand/announce',
             //请求方式post/get
             type: 'post',
             contentType: 'application/json',
             //数据
             data: JSON.stringify({
                 "demandId": demandId,
-                "endTime": $('#homeworkDeadline').val,
-                "groupId": groupId,
+                "groupId": $('#checkbox-text').val(),
                 "id": id,
-                "startTime": {
-                    "date": 0,
-                    "day": 0,
-                    "hours": 0,
-                    "minutes": 0,
-                    "month": 0,
-                    "nanos": 0,
-                    "seconds": 0,
-                    "time": 0,
-                    "timezoneOffset": 0,
-                    "year": 0
-                },
                 "token": token,
                 "type": type,
             }),
@@ -201,12 +225,39 @@ function submitHomework() {
             },
             //失败的回调函数
             error: function (e) {
+                console.log(JSON);
                 console.log(e);
             }
         })
     })
 }
 
+function uploadDoc() {
+    var formData = new FormData();
+    formData.append('file',$("#file")[0].files[0]);
+    console.log(formData)
+    $.ajax({
+        url:'http://localhost:8081/ework/file-demand/uploadFile',
+        data:formData,
+        type:"POST",
+        processData:false,
+        contentType:false,
+        dataType:"JSON",
+        mimeType:"multipart/form-data",
+        success:function (result) {
+            if(result.data.id===0){
+                alert("您没有选中文件")
+            }else {
+                fileUrl = result.data.id;
+                console.log(result.data.id);
+                alert("上传成功");
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
 //修改
 function changeHomework() {
     layui.use('layer',function() {
@@ -214,7 +265,7 @@ function changeHomework() {
         $.ajax({
             url:'http://localhost:8081/ework/work-demand/change',
             data:JSON.stringify({
-                "appendixUrl": null,
+                "appendixUrl": fileUrl,
                 "description": $('#admin-work-description').val(),
                 "id": id,
                 "title":$('#admin-work-name').val(),
@@ -228,7 +279,7 @@ function changeHomework() {
             dataType:"JSON",
             success:function (result) {
                 console.log(result.data.demandId);
-                alert("成功")
+                alert("上传成功")
             },
             error: function (e) {
                 console.log(e);

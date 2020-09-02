@@ -66,9 +66,7 @@ $(function () {
                             "<td>"+studentCount+"</td>"+
                             "<td>"+submitCount+"</td>"+
                             "<td>"+endTimeText+"</td>"+"<td>"+statusText+"</td>"+
-                            "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+"发布"+"</button>"
-                            +"</a>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
+                            "<td>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+
                             "<a href='../en/adminChangeHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"修改"+"</button>"
@@ -84,10 +82,6 @@ $(function () {
                             "<td>"+endTimeText+"</td>"+"<td>"+statusText+"</td>"+
                             "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"发布"+"</button>"
-                            +"</a>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+
-                            "<a href='../en/adminChangeHomework.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+"修改"+"</button>"
                             +"</a>"+"<a href='../en/adminDeleteHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"删除"+"</button>"
                             +"</a>"+"</td></tr>")

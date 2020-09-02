@@ -47,7 +47,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="adminCreatHomework.html" id="creatNewWork">新建作业</a></dd>
                         <dd><a href="adminCheckHomeworkList.html" id="checkWorkList">查看作业列表</a></dd>
-                        <dd><a href="javascript:;" id="others">其他</a></dd>
+                        <dd><a href="adminHomeworkCorrecting.html" id="others">批改作业</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
@@ -94,8 +94,30 @@
                             <p id="homeworkTitle">作业标题</p>
                             <p id="homeworkDescription">作业描述：</p>
                             <p id="homeworkUrl">作业附件链接：</p>
-
-                            还有一些内容没写完
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">开始时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="visitedCode" required lay-verify="required" id="startTime"
+                                           placeholder="测试" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">时间</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">结束时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="visitedCode" required lay-verify="required" id="endTime"
+                                           placeholder="测试" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">时间</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">请选择小组</label>
+                                <div class="layui-input-inline">
+                                    <select name="status" lay-verify="required" id="checkbox-text" style="width: 190px;height:40px">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
                             <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="submitHomework()">确认发布</button>
                             <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
                         </div>
