@@ -29,6 +29,59 @@ function returnCheck() {
     })
 }
 
+//显示作业详情
+$(function() {
+    layui.use('layer',function() {
+        var layer = layui.layer;
+        $.ajax({
+            //接口地址
+            url: 'http://localhost:8081/ework/work-demand/detail',
+            //请求方式post/get
+            type: 'post',
+            contentType: 'application/json',
+            //数据
+            data: JSON.stringify({
+                "demandId": demandId,
+                "id": id,
+                "token": token,
+                "type": type,
+            }),
+            //返回值类型
+            dataType: 'json',
+            //成功的回调函数
+            success: function (data) {
+                if (data.code === 1) {
+                    alert(data.msg);
+                    console.log(data);
+                } else {
+                    var fileUrl = 0;
+                    if(data.data.appendixUrl == null){
+                        fileUrl = '无附件'
+                    }
+                    $('#homeworkTitle').append(data.data.title);
+                    $('#homeworkDescription').append(data.data.description);
+                    $('#homeworkDeadline').append(data.data.studentId);
+                    $('#homeworkUsername').append(data.data.userName);
+                    var status = data.data.status;
+                    var statusText = '';
+                    if(status===110||status===120){
+                        statusText = '已发布';
+                    } else if (status===10||status==20) {
+                        statusText = '未发布';
+                    } else {
+                        statusText = '无效作业，请联系平台'
+                    }
+                    $('#homeworkStatus').append(statusText);
+                }
+            },
+            //失败的回调函数
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    })
+})
+
 //撤回
 function backSubmit() {
     layui.use('layer',function() {
@@ -142,7 +195,7 @@ function submitHomework() {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    alert('您已删除'+data.data.title);
+                    alert('您已发布'+data.data.title);
                     window.location.href = '../en/adminCheckHomeworkList.html'
                 }
             },
@@ -154,13 +207,14 @@ function submitHomework() {
     })
 }
 
+//修改
 function changeHomework() {
     layui.use('layer',function() {
         var layer = layui.layer
         $.ajax({
             url:'http://localhost:8081/ework/work-demand/change',
             data:JSON.stringify({
-                "appendixUrl": $('#doc')[0].files[0],
+                "appendixUrl": null,
                 "description": $('#admin-work-description').val(),
                 "id": id,
                 "title":$('#admin-work-name').val(),

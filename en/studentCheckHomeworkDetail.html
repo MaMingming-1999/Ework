@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ework - 个人信息</title>
+    <title>Ework - 查看作业评价</title>
     <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
@@ -61,37 +61,36 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>小组信息</legend>
+            <legend>查看作业评价</legend>
         </fieldset>
 
         <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body" id="title-text">
+                        不登高山,不知天之高也;不临深溪,不知地之厚也。
+                    </div>
+                </div>
+            </div>
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md12">
                     <div class="layui-card">
-                        <div class="layui-card-body" id="title-text">
-                            有时候，下山是为了爬上更高的山。
+                        <div class="layui-card-header">作业信息</div>
+                        <div class="layui-card-body">
+                            <p id="lay-stu-title">作业标题:</p>
+                            <p id="lay-stu-description">作业描述:</p>
+                            <p id="lay-stu-text">作业内容:</p>
+                            <p id="lay-stu-comment">批改评语:</p>
+                            <p id="lay-stu-score">作业成绩:</p>
+                            <p id="lay-stu-correctName">批改人:</p>
                         </div>
                     </div>
-                </div>
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-header">
-                            用户所在小组信息
-                        </div>
-                        <div class="layui-card-body">
-                            <p id="lay-stu-group-name">小组名称：</p>
-                            <p id="lay-stu-group-adm">小组创建者：</p>
-                            <p id="lay-stu-group-visited">小组邀请码：</p>
-                            <p id="lay-stu-group-status">小组当前状态：</p>
-                            <p id="lay-stu-group-description">小组描述：</p>
-                        </div>
+                    <div class="layui-form-item">
+                            <button class="layui-btn layui-btn-primary" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
     <div class="layui-footer">
@@ -106,7 +105,7 @@
 <script src="../resource/layui-v2.5.6/layui/layui.js"></script>
 <script src="../js/studentLayuiCommom.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/studentGroupDetial.js"></script>
+<script src="../js/studentCheckScore.js"></script>
 
 </body>
 </html>
