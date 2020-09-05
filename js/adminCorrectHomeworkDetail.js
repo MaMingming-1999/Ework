@@ -54,9 +54,11 @@ $(function() {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    var fileUrl = 0;
-                    if(data.data.appendixUrl == null){
-                        fileUrl = '无附件'
+                    var fileUrl = " ";
+                    if(data.data.appendixUrl1 === 0){
+                        fileUrl = '无附件';
+                    } else {
+                        fileUrl = "下载附件";
                     }
                     $('#homeworkTitle').append(data.data.title);
                     $('#homeworkDescription').append(data.data.description);

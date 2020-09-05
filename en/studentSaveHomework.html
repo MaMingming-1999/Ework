@@ -74,7 +74,9 @@
                         <div class="layui-card-body">
                             <p id="lay-stu-title">作业标题:</p>
                             <p id="lay-stu-description">作业描述:</p>
-                            <p id="lay-stu-url">下载作业要求附件:</p>
+                            <p id="lay-stu-url">下载作业要求附件:<a id='download' href='' download='filename.ext'></a></p>
+                            <p id="lay-stu-start">作业开始时间:</p>
+                            <p id="lay-stu-end">作业结束时间:</p>
                         </div>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
                         <div class="layui-card-header">编辑内容</div>
                         <div class="layui-card-body">
                             <div class="layui-form-item">
-                                <label class="layui-form-label">作业内容:</label>
+                                <label class="layui-form-label">内容:</label>
                                 <div class="layui-input-inline">
                                     <textarea name="commentCorrect" required lay-verify="required" id="lay-stu-text"
                                               placeholder="请输入作业内容" class="layui-textarea"></textarea>
@@ -91,7 +93,7 @@
                                 <div class="layui-form-mid layui-word-aux">请输入作业内容</div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">上传附件</label>
+                                <label class="layui-form-label">附件</label>
                                 <div class="layui-input-inline">
                                     <input type='file' id="file"/>
                                 </div>

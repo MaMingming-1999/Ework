@@ -4,23 +4,6 @@ var token = JSON.parse(localStorage.getItem('admin')).token;
 var type = JSON.parse(localStorage.getItem('admin')).type;
 var userName = JSON.parse(localStorage.getItem('admin')).userName;
 var demandId='';
-// $('#mytable').append("<tr><td>"+"1"+"</td>"+
-//                             "<td>"+"2"+"</td>"+
-//                             "<td>"+"3"+"</td>"+
-//                             "<td>"+"4"+"</td>"+
-//                             "<td>"+"5"+"</td>"+"<td>"+"6"+"</td>"+
-//                             "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
-//                             "<button class='layui-btn'>"+"发布"+"</button>"
-//                             +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-//                             "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+
-//     "<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
-//     "<button class='layui-btn'>"+"修改"+"</button>"
-//     +"</a>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
-//     "<button class='layui-btn'>"+"删除"+"</button>"
-//     +"</a>"+"</td></tr>"
-//
-// )
-
 
 //展示创建者的所有作业
 $(function () {
@@ -51,9 +34,13 @@ $(function () {
                     var studentCount = data.data[i].studentCount;
                     var submitCount = data.data[i].submitCount;
                     var endTime = data.data[i].endTime;
-                    var endTimeText = endTime
                     if(endTime == null){
-                        endTimeText = '--';
+                        end = '--';
+                    } else {
+                        var s = endTime.split("T");
+                        var endTimeText =s[0]+" "+s[1];
+                        var n = endTimeText.split(".")
+                        var end =n[0];
                     }
                     var status = data.data[i].status;
                     var statusText = status;
@@ -65,7 +52,7 @@ $(function () {
                             "<td>"+description+"</td>"+
                             "<td>"+studentCount+"</td>"+
                             "<td>"+submitCount+"</td>"+
-                            "<td>"+endTimeText+"</td>"+"<td>"+statusText+"</td>"+
+                            "<td>"+end+"</td>"+"<td>"+statusText+"</td>"+
                             "<td>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+
                             "<a href='../en/adminChangeHomework.html?demandId="+demandId+"'>"+
@@ -79,7 +66,7 @@ $(function () {
                             "<td>"+description+"</td>"+
                             "<td>"+studentCount+"</td>"+
                             "<td>"+submitCount+"</td>"+
-                            "<td>"+endTimeText+"</td>"+"<td>"+statusText+"</td>"+
+                            "<td>"+end+"</td>"+"<td>"+statusText+"</td>"+
                             "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"发布"+"</button>"
                             +"</a>"+"<a href='../en/adminDeleteHomework.html?demandId="+demandId+"'>"+

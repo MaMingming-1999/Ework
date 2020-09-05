@@ -197,6 +197,11 @@ function submitHomework() {
     layui.use('layer',function() {
         var layer = layui.layer;
         // console.log($('#checkbox-text').val());
+        var startDate = $('#test1').val();
+        var start = new Date(startDate).getTime();
+        var endDate = $('#test2').val();
+        var end = new Date(endDate).getTime();
+        console.log(end);
         $.ajax({
             //接口地址
             url: 'http://localhost:8081/ework/work-demand/announce',
@@ -207,9 +212,11 @@ function submitHomework() {
             data: JSON.stringify({
                 "demandId": demandId,
                 "groupId": $('#checkbox-text').val(),
+                "endTimeMills": end,
                 "id": id,
                 "token": token,
                 "type": type,
+                "startTimeMills":start,
             }),
             //返回值类型
             dataType: 'json',
@@ -225,7 +232,6 @@ function submitHomework() {
             },
             //失败的回调函数
             error: function (e) {
-                console.log(JSON);
                 console.log(e);
             }
         })
@@ -258,29 +264,41 @@ function uploadDoc() {
         }
     })
 }
+
 //修改
 function changeHomework() {
     layui.use('layer',function() {
-        var layer = layui.layer
+        var layer = layui.layer;
+        var description = $('#admin-work-description').val();
+        var title = $('#admin-work-name').val();
         $.ajax({
-            url:'http://localhost:8081/ework/work-demand/change',
-            data:JSON.stringify({
+            //接口地址
+            url: 'http://localhost:8081/ework/work-demand/change',
+            //请求方式post/get
+            type: 'post',
+            contentType: 'application/json',
+            //数据
+            data: JSON.stringify({
                 "appendixUrl": fileUrl,
-                "description": $('#admin-work-description').val(),
+                "description": description,
                 "id": id,
-                "title":$('#admin-work-name').val(),
+                "title": title,
                 "token": token,
                 "type": type,
-                "demandId":demandId
             }),
-            type:"POST",
-            processData:false,
-            contentType:false,
-            dataType:"JSON",
-            success:function (result) {
-                console.log(result.data.demandId);
-                alert("上传成功")
+            //返回值类型
+            dataType: 'json',
+            //成功的回调函数
+            success: function (data) {
+                if (data.code === 1) {
+                    alert(data.msg);
+                    console.log(data);
+                } else {
+                    alert("作业需求修改成功");
+                    window.location.href='../en/adminCheckHomeworkList.html';
+                }
             },
+            //失败的回调函数
             error: function (e) {
                 console.log(e);
             }

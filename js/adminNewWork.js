@@ -3,8 +3,6 @@ var id = JSON.parse(localStorage.getItem('admin')).id;
 var token = JSON.parse(localStorage.getItem('admin')).token;
 var type = JSON.parse(localStorage.getItem('admin')).type;
 var userName = JSON.parse(localStorage.getItem('admin')).userName;
-var description = $('#admin-work-description').val();
-var title = $('#admin-work-name').val();
 var fileUrl = 0;
 //上传
 function uploadDoc() {
@@ -34,10 +32,12 @@ function uploadDoc() {
     })
 }
 
-//发布
+//新建
 function addNewWork() {
     layui.use('layer',function() {
         var layer = layui.layer;
+        var description = $('#admin-work-description').val();
+        var title = $('#admin-work-name').val();
         $.ajax({
             //接口地址
             url: 'http://localhost:8081/ework/work-demand/create',

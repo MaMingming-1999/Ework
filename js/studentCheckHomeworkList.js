@@ -36,17 +36,36 @@ $(function() {
                         var description = data.data[i].description;
                         var status = data.data[i].status;
                         var submitId = data.data[i].id;
+                        var start = data.data[i].startTime;
+                        var end = data.data[i].endTime;
+                        var startText = '--'
+                        var endText = '--'
+                        if(start===null){
+                        } else {
+                            var s = start.split("T");
+                            var dateText = s[0]+" "+s[1];
+                            var n = dateText.split('.')
+                            startText = n[0];
+                        }
+                        if(end===null){
+                        } else {
+                            var s1 = end.split("T");
+                            var dateText1 = s1[0]+" "+s1[1];
+                            var n1 = dateText1.split('.')
+                            endText = n1[0];
+                        }
                         if(status===100)
                         {
                             $('#mytable').append("<tr><td>"+title+"<img src='../img/newLogo.gif'>"+"</td>"+
                                 "<td>"+description+"</td>"+
-                                "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+'尚未完成'+"</td>"+
-                                "<td>"+"<a href='../en/studentSaveHomework.html?submitId="+submitId+"'>"+
+                                "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+'尚未完成'+"</td>"+"<td>"+startText+"</td>"+
+                                "<td>"+endText+"</td>"+ "<td>"+"<a href='../en/studentSaveHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"去写作业"+"</button>" +"</a></td></tr>")
                         } else if (status===110||status===120) {
                             $('#mytable').append("<tr><td>"+title+"</td>"+
                                 "<td>"+description+"</td>"+
                                 "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+"作业已保存但未提交"+"</td>"+
+                                "<td>"+startText+"</td>"+ "<td>"+endText+"</td>"+
                                 "<td>"+"<a href='../en/studentSubmitHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"提交"+"</button></a>"+"<a href='../en/studentSaveHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"修改"+"</button>"+"</a></td></tr>")
@@ -54,12 +73,14 @@ $(function() {
                             $('#mytable').append("<tr><td>"+title+"</td>"+
                                 "<td>"+description+"</td>"+
                                 "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+"已提交作业"+"</td>"+
+                                "<td>"+startText+"</td>"+ "<td>"+endText+"</td>"+
                                 "<td>"+"<a href='../en/studentBackHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"撤回"+"</button>" +"</a></td></tr>")
                         } else if(status===230) {
                             $('#mytable').append("<tr><td>"+title+"</td>"+
                                 "<td>"+description+"</td>"+
                                 "<td>"+score+"</td>"+"<td>"+correctName+"</td>"+"<td>"+"作业已批改"+"</td>"+
+                                "<td>"+startText+"</td>"+ "<td>"+endText+"</td>"+
                                 "<td>"+"<a href='../en/studentCheckHomeworkDetail.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"查看"+"</button>"+"</a></td></tr>")
                         }

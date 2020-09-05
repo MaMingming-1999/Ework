@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../resource/layui-v2.5.6/layui/css/layui.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/deleteGroup.css">
+    <script src="../js/timeSelect.js"></script>
+    <link rel="stylesheet" href="../resource/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../resource/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
 </head>
 <body class="layui-layout-body">
 
@@ -88,30 +91,43 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-header">
-                            小组信息
+                            发布作业信息
                         </div>
                         <div class="layui-card-body">
                             <p id="homeworkTitle">作业标题</p>
                             <p id="homeworkDescription">作业描述：</p>
                             <p id="homeworkUrl">作业附件链接：</p>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">开始时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="visitedCode" required lay-verify="required" id="startTime"
-                                           placeholder="测试" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            填写发布要求
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">开始日</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test1" placeholder="请选择开始时间">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="layui-form-mid layui-word-aux">时间</div>
+                            </div>
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">结束日</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test2" placeholder="请选择结束时间">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">结束时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="visitedCode" required lay-verify="required" id="endTime"
-                                           placeholder="测试" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid layui-word-aux">时间</div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">请选择小组</label>
+                                <label class="layui-form-label">小组</label>
                                 <div class="layui-input-inline">
                                     <select name="status" lay-verify="required" id="checkbox-text" style="width: 190px;height:40px">
                                         <option value=""></option>
@@ -119,10 +135,11 @@
                                 </div>
                             </div>
                             <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="submitHomework()">确认发布</button>
-                            <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
+                            <button class="layui-btn layui-btn-primary" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
             </div>
         </div>
@@ -144,6 +161,30 @@
 <script src="../js/common.js"></script>
 <script src="../js/adminLayuiCommon.js"></script>
 <script src="../js/adminCheckHomeworkDetail.js"></script>
+<script src="../js/timeSelect.js"></script>
+<script>
+    layui.use('laydate',function(){
+        var laydate = layui.laydate;
+    })
 
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //常规用法
+        laydate.render({
+            elem: '#test1',
+            type: 'datetime',
+        });
+    })
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //常规用法
+        laydate.render({
+            elem: '#test2',
+            type: 'datetime',
+        });
+    })
+</script>
 </body>
 </html>

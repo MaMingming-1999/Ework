@@ -3,8 +3,7 @@ var id = JSON.parse(localStorage.getItem('student')).id;
 var token = JSON.parse(localStorage.getItem('student')).token;
 var type = JSON.parse(localStorage.getItem('student')).type;
 var userName = JSON.parse(localStorage.getItem('student')).userName;
-var fileUrl = 0;
-
+var demandUrl = ''
 //找到链接的groupCode
 function parseUrl(){
     var url=location.href;
@@ -29,9 +28,7 @@ function returnCheck() {
         window.location.href = '../en/studentCheckHomeworkList.html';
     })
 }
-
 //显示作业详情
-$(function() {
     layui.use('layer',function() {
         var layer = layui.layer;
         $.ajax({
@@ -55,9 +52,54 @@ $(function() {
                     alert(data.msg);
                     console.log(data);
                 } else {
+                    var start = data.data.startTime;
+                    var end = data.data.endTime;
                     $('#lay-stu-title').append(data.data.title);
                     $('#lay-stu-description').append(data.data.description);
-                    $('#lay-stu-url').append("下载附件");
+                    if(start===null){
+                        $('#lay-stu-start').append('--');
+                    } else {
+                        var s = start.split("T");
+                        var dateText = s[0]+" "+s[1];
+                        var n = dateText.split('.')
+                        var dateTime = n[0];
+                        $('#lay-stu-start').append(dateTime);
+                    }
+                    if(end===null){
+                        $('#lay-stu-end').append('--');
+                    } else {
+                        var s1 = end.split("T");
+                        var dateText1 = s1[0]+" "+s1[1];
+                        var n1 = dateText1.split('.')
+                        var dateTime1 = n1[0];
+                        $('#lay-stu-end').append(dateTime1);
+                    }
+                    if(data.data.appendixUrl===0){
+                        $('#lay-stu-url').append("无附件");
+                    } else {
+                        console.log(data.data.appendixUrl)
+                        demandUrl = data.data.appendixUrl;
+                        console.log(demandUrl);
+                        $('#download').append("下载");
+                        $.ajax({
+                            url:'http://localhost:8081/ework/file-demand/download',
+                            data:JSON.stringify({
+                                id:demandUrl,
+                            }),
+                            type:"GET",
+                            // processData:false,
+                            // contentType:false,
+                            dataType:"JSON",
+                            contentType: 'application/json',
+                            success:function (result) {
+                                $('#download').attr('href',data.file.canonicalPath);
+                            },
+                            error: function (e) {
+                                console.log(e);
+                            }
+                        })
+                    }
+
                 }
             },
             //失败的回调函数
@@ -66,7 +108,30 @@ $(function() {
             }
         })
     })
-})
+
+// //下载需求
+// $(function () {
+//     console.log(demandUrl);
+//     $.ajax({
+//         url:'http://localhost:8081/ework/file-demand/download',
+//         data:JSON.stringify({
+//             id:demandUrl,
+//         }),
+//         type:"GET",
+//         // processData:false,
+//         // contentType:false,
+//         dataType:"JSON",
+//         mimeType:"multipart/form-data",
+//         success:function (result) {
+//             $('#download').attr('href',data.file.canonicalPath);
+//         },
+//         error: function (e) {
+//             console.log(e);
+//         }
+//     })
+// })
+
+
 
 function uploadDoc() {
     var formData = new FormData();
