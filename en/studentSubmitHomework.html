@@ -13,7 +13,7 @@
         <div class="layui-logo">Ework作业系统学生端</div>
         <ul class="layui-nav layui-layout-left">
             <!--水平导航：显示用户名+个人信息+注销账号+安全退出-->
-            <li class="layui-nav-item"><a href="studentHome.html" id="goto-index">首页</a></li>
+            <li class="layui-nav-item"><a href="studentCheckHomeworkList.html" id="goto-index">首页</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -73,9 +73,9 @@
                             <p id="lay-stu-title">作业标题:</p>
                             <p id="lay-stu-description">作业描述:</p>
                             <p id="lay-stu-text">作业内容:</p>
-                            <p id="lay-stu-url">下载附件:</p>
+                            <p id="lay-stu-url">下载附件:<a id='download' href="" onclick="downloadFileSubmit()"></a></p>
                             <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="submitHomework()">确认提交</button>
-                            <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
+                            <button class="layui-btn layui-btn-primary" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
                         </div>
                     </div>
                 </div>

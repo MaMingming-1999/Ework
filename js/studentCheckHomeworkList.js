@@ -75,14 +75,14 @@ $(function() {
                                 "<td>"+"--"+"</td>"+"<td>"+"--"+"</td>"+"<td>"+"已提交作业"+"</td>"+
                                 "<td>"+startText+"</td>"+ "<td>"+endText+"</td>"+
                                 "<td>"+"<a href='../en/studentBackHomework.html?submitId="+submitId+"'>"+
-                                "<button class='layui-btn'>"+"撤回"+"</button>" +"</a></td></tr>")
+                                "<button class='layui-btn layui-btn-danger'>"+"撤回"+"</button>" +"</a></td></tr>")
                         } else if(status===230) {
                             $('#mytable').append("<tr><td>"+title+"</td>"+
                                 "<td>"+description+"</td>"+
                                 "<td>"+score+"</td>"+"<td>"+correctName+"</td>"+"<td>"+"作业已批改"+"</td>"+
                                 "<td>"+startText+"</td>"+ "<td>"+endText+"</td>"+
                                 "<td>"+"<a href='../en/studentCheckHomeworkDetail.html?submitId="+submitId+"'>"+
-                                "<button class='layui-btn'>"+"查看"+"</button>"+"</a></td></tr>")
+                                "<button class='layui-btn layui-btn-primary'>"+"查看"+"</button>"+"</a></td></tr>")
                         }
                     }
                 }

@@ -39,7 +39,7 @@ $(function () {
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
                                     +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-                                    "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
+                                    "<button class='layui-btn layui-btn-danger'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===20) {
                                 statusInfo='只允许管理员加入';
                                 $('#mytable').append("<tr><td>"+data.data.createGroupDetailVoList[i].createAdminName+"</td>"+
@@ -50,7 +50,7 @@ $(function () {
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
                                     +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-                                    "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
+                                    "<button class='layui-btn layui-btn-danger'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===30) {
                                 statusInfo = '只允许学生加入';
                                 $('#mytable').append("<tr><td>"+data.data.createGroupDetailVoList[i].createAdminName+"</td>"+
@@ -61,7 +61,7 @@ $(function () {
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
                                     +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-                                    "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
+                                    "<button class='layui-btn layui-btn-danger'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===40) {
                                 statusInfo = '允许管理员和学生加入';
                                 $('#mytable').append("<tr><td>"+data.data.createGroupDetailVoList[i].createAdminName+"</td>"+
@@ -72,7 +72,7 @@ $(function () {
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
                                     +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-                                    "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
+                                    "<button class='layui-btn layui-btn-danger'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                                 console.log(groupId);
                             } else if(status===80) {
                                 statusInfo = '停用';
@@ -84,7 +84,7 @@ $(function () {
                                     "<td>"+"<a href='../en/adminEditGroup.html?groupId="+groupId+"'>"+
                                     "<button class='layui-btn'>"+"编辑"+"</button>"
                                     +"</a>"+"<a href='../en/deleteGroup.html?groupId="+groupId+"'>"+
-                                    "<button class='layui-btn'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
+                                    "<button class='layui-btn layui-btn-danger'>"+ "删除"+"</button>"+ "</a>"+"</td></tr>");
                             } else if(status===100) {
                             }
                         }

@@ -3,7 +3,7 @@ var id = JSON.parse(localStorage.getItem('student')).id;
 var token = JSON.parse(localStorage.getItem('student')).token;
 var type = JSON.parse(localStorage.getItem('student')).type;
 var userName = JSON.parse(localStorage.getItem('student')).userName;
-
+var textUrl = '';
 //找到链接的groupCode
 function parseUrl(){
     var url=location.href;
@@ -57,7 +57,12 @@ $(function() {
                     $('#lay-stu-title').append(data.data.title);
                     $('#lay-stu-description').append(data.data.description);
                     $('#lay-stu-text').append(data.data.text);
-                    $('#lay-stu-url').append(data.data.appendixUrl1);
+                    if(data.data.appendixUrl1===null){
+                        $('#lay-stu-url').append("无附件");
+                    } else {
+                        textUrl = data.data.appendixUrl1;
+                        $('#download').append("下载");
+                    }
                 }
             },
             //失败的回调函数
@@ -67,7 +72,10 @@ $(function() {
         })
     })
 })
-
+//下载需求
+function downloadFileSubmit() {
+    $('#download').attr('href',textUrl);
+}
 //退回作业
 function backHomework(){
     layui.use('layer',function() {

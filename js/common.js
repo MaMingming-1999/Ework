@@ -1,6 +1,6 @@
 function stuLogin() {
-    window.location.href="../en/studentLogin.html"
+    window.location.href="../en/studentCheckHomeworkList.html"
 }
 function admLogin() {
-    window.location.href="../en/adminLogin.html"
+    window.location.href="../en/adminCheckHomeworkList.html"
 }

@@ -3,6 +3,7 @@ var id = JSON.parse(localStorage.getItem('admin')).id;
 var token = JSON.parse(localStorage.getItem('admin')).token;
 var type = JSON.parse(localStorage.getItem('admin')).type;
 // var userName = JSON.parse(localStorage.getItem('admin')).userName;
+var textUrl = '';
 
 //找到链接的groupCode
 function parseUrl(){
@@ -54,18 +55,28 @@ $(function() {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    var fileUrl = " ";
-                    if(data.data.appendixUrl1 === 0){
-                        fileUrl = '无附件';
+                    var end = data.data.endTime;
+                    if(end===null){
+                        $('#homeworkDeadline').append('--');
                     } else {
-                        fileUrl = "下载附件";
+                        var s1 = end.split("T");
+                        var dateText1 = s1[0]+" "+s1[1];
+                        var n1 = dateText1.split('.')
+                        var dateTime1 = n1[0];
+                        $('#homeworkDeadline').append(dateTime1);
+                    }
+                    textUrl = data.data.appendixUrl1
+                    if(textUrl === null){
+                        textUrl = '无附件';
+                        $('#homeworkUrl').append(textUrl)
+                    } else {
+                        $('#download').append("下载");
                     }
                     $('#homeworkTitle').append(data.data.title);
                     $('#homeworkDescription').append(data.data.description);
-                    $('#homeworkStudentId').append(data.data.studentId);
                     $('#homeworkText').append(data.data.text);
                     $('#homeworkUsername').append(data.data.userName);
-                    $('#homeworkUrl').append(fileUrl);
+                    $('#homeworkStudentId').append(data.data.studentId);
                 }
             },
             //失败的回调函数
@@ -75,6 +86,11 @@ $(function() {
         })
     })
 })
+
+//下载需求
+function downloadFileSubmit() {
+    $('#download').attr('href',textUrl);
+}
 
 //退回作业
 function returnHomework(){

@@ -4,7 +4,9 @@ var token = JSON.parse(localStorage.getItem('admin')).token;
 var type = JSON.parse(localStorage.getItem('admin')).type;
 var userName = JSON.parse(localStorage.getItem('admin')).userName;
 var fileUrl = 0;
-//找到链接的groupCode
+var textUrl = '';
+
+//找到链接
 function parseUrl(){
     var url=location.href;
     var i=url.indexOf('?');
@@ -54,19 +56,31 @@ $(function() {
                     alert(data.msg);
                     console.log(data);
                 } else {
-                    var fileUrl = 0;
-                    if(data.data.appendixUrl == null){
-                        fileUrl = '无附件'
+                    var end = data.data.endTime;
+                    textUrl = data.data.appendixUrl
+                    if(textUrl == null){
+                        textUrl = '无附件'
+                        $('#homeworkUrl').append(textUrl)
+                    } else {
+                        $('#download').append("下载")
+                    }
+                    if(end===null){
+                        $('#homeworkDeadline').append('--');
+                    } else {
+                        var s1 = end.split("T");
+                        var dateText1 = s1[0]+" "+s1[1];
+                        var n1 = dateText1.split('.')
+                        var dateTime1 = n1[0];
+                        $('#homeworkDeadline').append(dateTime1);
                     }
                     $('#homeworkTitle').append(data.data.title);
                     $('#homeworkDescription').append(data.data.description);
-                    $('#homeworkDeadline').append(data.data.studentId);
                     $('#homeworkUsername').append(data.data.userName);
                     var status = data.data.status;
                     var statusText = '';
                     if(status===110||status===120){
                         statusText = '已发布';
-                    } else if (status===10||status==20) {
+                    } else if (status===10||status===20) {
                         statusText = '未发布';
                     } else {
                         statusText = '无效作业，请联系平台'
@@ -81,7 +95,10 @@ $(function() {
         })
     })
 })
-
+//下载需求
+function downloadFile() {
+    $('#download').attr('href',textUrl);
+}
 //撤回
 function backSubmit() {
     layui.use('layer',function() {

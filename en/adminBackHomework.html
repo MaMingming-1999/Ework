@@ -14,7 +14,7 @@
         <div class="layui-logo">Ework作业系统管理端</div>
         <ul class="layui-nav layui-layout-left">
             <!--水平导航：显示用户名+个人信息+注销账号+安全退出-->
-            <li class="layui-nav-item"><a href="adminHome.html" id="goto-index">首页</a></li>
+            <li class="layui-nav-item"><a href="adminCheckHomeworkList.html" id="goto-index">首页</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -64,8 +64,6 @@
                         <dd><a href="adminHome.html" id="adminSettings">个人信息设置</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;" id="5"><i class="layui-icon layui-icon-home" style="margin-right: 10px"></i>测试3</a></li>
-                <li class="layui-nav-item"><a href="javascript:;" id="6"><i class="layui-icon layui-icon-heart-fill" style="margin-right: 10px"></i>测试4</a></li>
                 <li class="layui-nav-item"><a href="javascript:;" id="7"><i class="layui-icon layui-icon-app" style="margin-right: 10px"></i>其他功能</a></li>
             </ul>
         </div>
@@ -88,16 +86,16 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-header">
-                            小组信息
+                            作业信息
                         </div>
                         <div class="layui-card-body">
                             <p id="homeworkTitle">作业标题</p>
                             <p id="homeworkDescription">作业描述：</p>
-                            <p id="homeworkUrl">作业附件链接：</p>
+                            <p id="homeworkUrl">作业附件链接：<a id='download' href="" onclick="downloadFile()"></a></p>
                             <p id="homeworkDeadline">结束收作业时间：</p>
                             <p id="homeworkStatus">作业当前状态：</p>
                             <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="backSubmit()">确认撤回</button>
-                            <button class="layui-btn" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
+                            <button class="layui-btn layui-btn-primary" lay-submit lay-filter="submitChange" onclick="returnCheck()">返回</button>
                         </div>
                     </div>
                 </div>

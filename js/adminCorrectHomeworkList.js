@@ -42,7 +42,7 @@ $(function() {
                                 "<td>"+"<a href='../en/adminCorrectHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"批改"+"</button>"
                                 +"</a>"+"<a href='../en/adminReturnStudentHomework.html?submitId="+submitId+"'>"+
-                                "<button class='layui-btn'>"+ "退回"+"</button>"+ "</a>"+"</td></tr>")
+                                "<button class='layui-btn layui-btn-danger'>"+ "退回"+"</button>"+ "</a>"+"</td></tr>")
                         } else if (status===230) {
                             $('#mytable').append("<tr><td>"+announcerName+"</td>"+
                                 "<td>"+title+"</td>"+
@@ -52,7 +52,7 @@ $(function() {
                                 "<td>"+"<a href='../en/adminRecorrectHomework.html?submitId="+submitId+"'>"+
                                 "<button class='layui-btn'>"+"重判"+"</button>"
                                 +"</a>"+"<a href='../en/adminReturnStudentHomework.html?submitId="+submitId+"'>"+
-                                "<button class='layui-btn'>"+ "退回"+"</button>"+ "</a>"+"</td></tr>")
+                                "<button class='layui-btn layui-btn-danger'>"+ "退回"+"</button>"+ "</a>"+"</td></tr>")
                         }
                     }
                 }

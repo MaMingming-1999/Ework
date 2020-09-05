@@ -4,6 +4,7 @@ var token = JSON.parse(localStorage.getItem('student')).token;
 var type = JSON.parse(localStorage.getItem('student')).type;
 var userName = JSON.parse(localStorage.getItem('student')).userName;
 var demandUrl = ''
+var fileUrl = ''
 //找到链接的groupCode
 function parseUrl(){
     var url=location.href;
@@ -74,30 +75,11 @@ function returnCheck() {
                         var dateTime1 = n1[0];
                         $('#lay-stu-end').append(dateTime1);
                     }
-                    if(data.data.appendixUrl===0){
+                    if(data.data.appendixUrl===null){
                         $('#lay-stu-url').append("无附件");
                     } else {
-                        console.log(data.data.appendixUrl)
                         demandUrl = data.data.appendixUrl;
-                        console.log(demandUrl);
                         $('#download').append("下载");
-                        // $.ajax({
-                        //     url:'http://localhost:8081/ework/file-demand/getUrl',
-                        //     data:JSON.stringify({
-                        //         id:demandUrl,
-                        //     }),
-                        //     type:"GET",
-                        //     // processData:false,
-                        //     // contentType:false,
-                        //     dataType:"JSON",
-                        //     contentType: 'application/json',
-                        //     success:function (result) {
-                        //         $('#download').attr('href',data.data);
-                        //     },
-                        //     error: function (e) {
-                        //         console.log(e);
-                        //     }
-                        // })
                     }
 
                 }
@@ -108,31 +90,11 @@ function returnCheck() {
             }
         })
     })
-
+//
 //下载需求
-$('#download').click(function () {
-    console.log(demandUrl);
-    $.ajax({
-        url:'http://localhost:8081/ework/file-demand/getUrl',
-        data:JSON.stringify({
-            id:demandUrl,
-        }),
-        type:"GET",
-        // processData:false,
-        // contentType:false,
-        dataType:"JSON",
-        // contentType: 'application/json',
-        success:function (result) {
-            console.log(result.data);
-            window.open(result.data);
-            // $('#download').attr('href',result.data);
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    })
-})
-
+function downloadFile() {
+    $('#download').attr('href',demandUrl)
+}
 
 
 function uploadDoc() {

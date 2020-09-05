@@ -53,12 +53,12 @@ $(function () {
                             "<td>"+studentCount+"</td>"+
                             "<td>"+submitCount+"</td>"+
                             "<td>"+end+"</td>"+"<td>"+statusText+"</td>"+
-                            "<td>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+ "撤回"+"</button>"+ "</a>"+
-                            "<a href='../en/adminChangeHomework.html?demandId="+demandId+"'>"+
+                            "<td>"+ "<a href='../en/adminChangeHomework.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"修改"+"</button>"
-                            +"</a>"+"<a href='../en/adminDeleteHomework.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+"删除"+"</button>"
+                            +"</a>"+"<a href='../en/adminBackHomework.html?demandId="+demandId+"'>"+
+                            "<button class='layui-btn layui-btn-primary'>"+ "撤回"+"</button>"+ "</a>"+
+                            "<a href='../en/adminDeleteHomework.html?demandId="+demandId+"'>"+
+                            "<button class='layui-btn layui-btn-danger'>"+"删除"+"</button>"
                             +"</a>"+"</td></tr>")
                     } else if(status===10||status===20) {
                         statusText = '未发布';
@@ -70,7 +70,7 @@ $(function () {
                             "<td>"+"<a href='../en/adminSubmitWork.html?demandId="+demandId+"'>"+
                             "<button class='layui-btn'>"+"发布"+"</button>"
                             +"</a>"+"<a href='../en/adminDeleteHomework.html?demandId="+demandId+"'>"+
-                            "<button class='layui-btn'>"+"删除"+"</button>"
+                            "<button class='layui-btn layui-btn-danger'>"+"删除"+"</button>"
                             +"</a>"+"</td></tr>")
                     } else if (status===0){
 
